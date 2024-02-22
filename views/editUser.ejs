@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%= title%>
+    </title>
+    <link rel="stylesheet" href="/styles/style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Edit User</h1>
+        <form action="/api/<%= userById._id%>?_method=PATCH" method="POST">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required value="<%= userById.name%>" />
+            </div>
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" value="<%= userById.age%>" required />
+            </div>
+            <button class="add-user-btn" type="submit">Submit</button>
+            <button class="delete-btn" onclick="location.href='/api'">
+                Cancel
+            </button>
+        </form>
+        <!-- <a href="/api" class="delete-btn">Cancel</a> -->
+    </div>
+</body>
+
+</html>

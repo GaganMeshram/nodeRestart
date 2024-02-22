@@ -1,0 +1,41 @@
+<!-- views/userList.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User List</title>
+  <link rel="stylesheet" href="/styles/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Team Members</h1>
+    <button class="add-user-btn" onclick="location.href='/add-user'" type="button">Add Member</button>
+    <button class="add-user-btn" onclick="location.href='/'" type="button">Home</button>
+
+    <ul class="user-list">
+      <% data.forEach(user=> { %>
+        <li class="user-item">
+          <div class="user-details">
+            <h2 class="user-name">
+              <%= user.name %>
+            </h2>
+            <p class="user-age">Age: <%= user.age %>
+            </p>
+          </div>
+          <form action="/api/<%= user._id%>" method="GET">
+            <button class="edit-btn" type="submit">Edit</button>
+          </form>
+          <form action="/api/<%= user._id %>?_method=DELETE" method="POST">
+            <button class="delete-btn" type="submit">Delete</button>
+          </form>
+          
+        </li>
+        <% }) %>
+    </ul>
+  </div>
+</body>
+
+</html>
